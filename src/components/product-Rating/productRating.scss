@@ -1,0 +1,23 @@
+.rating-info__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.rating-info__rating {
+    margin-right: 10px;
+    font-weight: 600;
+    font-size: calc( (100vw - 320px)/(1920 - 320) * (36 - 16) + 16px);
+}
+
+.rating-info__rating-star {
+
+    display: flex;
+
+
+    .star {
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+        background-color: rebeccapurple;
+    }
+}

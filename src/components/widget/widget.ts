@@ -1,28 +1,31 @@
 import './widget.scss';
 
-import { getWidget } from '../../shared/server';
 import { BaseComponent } from '../baseComponent';
+import { ProductInfo } from '../product-Info/productInfo';
+import { getWidgetData } from '../../shared/server';
 
 export class Widget {
 
     constructor(rootElement: HTMLElement) {
 
-
-
-        getWidget(['page=1', 'per_page=15']).then((data) => {
-            console.log(data);
-        });
-
-        this.render(rootElement);
+          getWidgetData().then((data) => {
+            this.render(rootElement, data);
+          })
     }
 
 
-    render(rootElement: HTMLElement) {
+    render(rootElement: HTMLElement, data: { [key: string]: string; }[]) {
 
-        const widget = new BaseComponent('div', ['widget__wrapper']);
+        console.log(Object(data).product);
+
+        const widget = new BaseComponent('div', ['wg-wrapper']);
+
+        const productInfo = new ProductInfo(Object(data).product);
 
         rootElement.append(widget.element);
 
-        
+        widget.element.append(productInfo.element);
+
+
     }
 }

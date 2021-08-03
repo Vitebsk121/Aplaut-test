@@ -1,4 +1,5 @@
 import { Widget } from './components/widget/widget';
+
 import './style.scss';
 
 window.onload = () => {
