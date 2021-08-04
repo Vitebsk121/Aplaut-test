@@ -1,25 +1,43 @@
+import { Product } from '../../shared/interfaces';
 import { BaseComponent } from '../baseComponent';
+import { CarouselOfPhotos } from '../carouselOfPhotos/carouselOfPhotos';
 import { ProductRating } from '../product-Rating/productRating';
 import './productInfo.scss';
 
 export class ProductInfo extends BaseComponent {
-  private productRating: ProductRating;
 
-  constructor(product: { [key: string]: string }) {
+  constructor(product: Product) {
     super('div', ['wg__product-info']);
 
-    this.productRating = new ProductRating(product);
-
-    this.render();
+    this.render(product);
   }
 
-  render(): void {
+  render(product: Product): void {
     const productHeader = new BaseComponent('div', ['product-info__header']);
+
+    const productRating = new ProductRating(product);
 
     const addNewReviewBtn = new BaseComponent('button', ['wg__new-review-btn'], 'new-review-btn', 'Написать отзыв');
 
-    this.element.append(productHeader.element);
+    const carouselOfPhotos = new CarouselOfPhotos('product', product)
 
-    productHeader.element.append(this.productRating.element, addNewReviewBtn.element);
+    const ratingDetails = new BaseComponent('div', ['product-info__details']);
+
+    const ratingDetailsTitle = new BaseComponent('p', ['product-info__details__title'], '', 'Отзывы, в которых упоминается');
+
+    const ratingDetailsReviewsTitle = new BaseComponent('div', ['product-info__details__reviews-titles']);
+
+    this.element.append(productHeader.element, carouselOfPhotos.element, ratingDetails.element);
+
+    productHeader.element.append(productRating.element, addNewReviewBtn.element);
+
+    ratingDetails.element.append(ratingDetailsTitle.element, ratingDetailsReviewsTitle.element);
+    
+    for(let i = 0; i < product.rating_details.length; i++) {
+
+      const mostPopularReviewsTitle = new BaseComponent('p', ['reviews-titles__title'], '', product.rating_details[i].label);
+
+      ratingDetailsReviewsTitle.element.append(mostPopularReviewsTitle.element);
+    }
   }
 }

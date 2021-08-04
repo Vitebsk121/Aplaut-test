@@ -1,3 +1,8 @@
+.wg__product-info {
+    width: 80%;
+    margin: auto;
+}
+
 .product-info__header {
     display: flex;
     align-items: center;
@@ -26,4 +31,20 @@
         transform: scale(.98);
         box-shadow: 0px 0px 15px 5px rgba(50, 50, 50, 0.4);
     }
+}
+
+.product-info__details__title {
+    font-weight: 600;
+}
+
+.product-info__details__reviews-titles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reviews-titles__title {
+    margin-right: 7px;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
 }

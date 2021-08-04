@@ -1,0 +1,100 @@
+.product-info__photos {
+    display: flex;
+}
+
+
+.product-info__reviews-ph-carousel {
+    width: 770px;
+    padding: 0 2px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.reviews-photo-carousel__btn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    z-index: 10;
+    transition: all .2s;
+    background-color: whitesmoke;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px .2px rgba(0, 0, 0, 0.75);
+
+    &.left {
+        top: 50%;
+        left: 4px;
+        background-image: url(https://freesvg.org/storage/img/thumb/1544644548.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        transform: translateY(-50%) rotate(-90deg);
+
+        &:hover {
+            transform: translateY(-50%) scale(1.1) rotate(-90deg);
+        }
+    
+        &:active {
+            transform: translateY(-50%) scale(.9) rotate(-90deg);
+        }
+    }
+
+    &.right {
+        top: 50%;
+        right: 4px;
+        background-image: url(https://freesvg.org/storage/img/thumb/1544644548.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        transform: translateY(-50%) rotate(90deg);
+
+        &:hover {
+            transform: translateY(-50%) scale(1.1) rotate(90deg);
+        }
+    
+        &:active {
+            transform: translateY(-50%) scale(.9) rotate(90deg);
+        }
+    }
+}
+
+.product-info__gallery {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: all .1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.photo-cards__product-pic,
+.photos__add-new-ph {
+    border-radius: 5px;
+    margin: 10px 5px 20px; 
+    min-width: 100px;
+    min-height: 100px;
+    transition: all .3s;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.photos__add-new-ph {
+    min-width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    background-color: rgb(230, 230, 230);
+    background-image: url(https://icon-library.com/images/add_photo-512.png);
+    background-size: 40%;
+}

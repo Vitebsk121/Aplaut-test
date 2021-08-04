@@ -15,7 +15,7 @@ export class Widget {
     });
   }
 
-  render(rootElement: HTMLElement, data: { [key: string]: string; }[]): void {
+  render(rootElement: HTMLElement, data: { [key: string]: Widget; }[]): void {
     const productInfo = new ProductInfo(Object(data).product);
 
     rootElement.append(this.widget.element);
