@@ -3,24 +3,23 @@ import { ProductRating } from '../product-Rating/productRating';
 import './productInfo.scss';
 
 export class ProductInfo extends BaseComponent {
+  private productRating: ProductRating;
 
-    private productRating: ProductRating;
+  constructor(product: { [key: string]: string }) {
+    super('div', ['wg__product-info']);
 
-    constructor(product: { [key: string]: string }) {
-        super('div', ['wg__product-info']);
+    this.productRating = new ProductRating(product);
 
-        this.productRating = new ProductRating(product);
+    this.render();
+  }
 
-        this.render();
-    }
+  render(): void {
+    const productHeader = new BaseComponent('div', ['product-info__header']);
 
-    render() {
+    const addNewReviewBtn = new BaseComponent('button', ['wg__new-review-btn'], 'new-review-btn', 'Написать отзыв');
 
-        const productHeader = new BaseComponent('div', ['product-info__header']);
+    this.element.append(productHeader.element);
 
-        this.element.append(productHeader.element);
-
-        productHeader.element.append(this.productRating.element);
-
-    }
+    productHeader.element.append(this.productRating.element, addNewReviewBtn.element);
+  }
 }

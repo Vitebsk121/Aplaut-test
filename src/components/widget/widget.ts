@@ -5,27 +5,21 @@ import { ProductInfo } from '../product-Info/productInfo';
 import { getWidgetData } from '../../shared/server';
 
 export class Widget {
+  private widget: BaseComponent;
 
-    constructor(rootElement: HTMLElement) {
+  constructor(rootElement: HTMLElement) {
+    this.widget = new BaseComponent('div', ['wg-wrapper']);
 
-          getWidgetData().then((data) => {
-            this.render(rootElement, data);
-          })
-    }
+    getWidgetData().then((data) => {
+      this.render(rootElement, data);
+    });
+  }
 
+  render(rootElement: HTMLElement, data: { [key: string]: string; }[]): void {
+    const productInfo = new ProductInfo(Object(data).product);
 
-    render(rootElement: HTMLElement, data: { [key: string]: string; }[]) {
+    rootElement.append(this.widget.element);
 
-        console.log(Object(data).product);
-
-        const widget = new BaseComponent('div', ['wg-wrapper']);
-
-        const productInfo = new ProductInfo(Object(data).product);
-
-        rootElement.append(widget.element);
-
-        widget.element.append(productInfo.element);
-
-
-    }
+    this.widget.element.append(productInfo.element);
+  }
 }
