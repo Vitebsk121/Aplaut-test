@@ -43,18 +43,23 @@ export class ProductRating extends BaseComponent {
   }
 
   render(product: Product): void {
+
     const ratingWrapper = new BaseComponent('div', ['rating-info__wrapper']);
 
     const rating = new BaseComponent('p', ['rating-info__rating'], '', String(product.rating).replace('.', ','));
 
     const ratingStar = new BaseComponent('div', ['rating-info__rating-star']);
 
-    const ratingRewiewsCount = new BaseComponent(
-      'p',
-      ['rating-info__rew-count'],
-      '',
-      `На основе ${product.reviews_count} оценок.`,
-    );
+    let ratingRewiewsCount: BaseComponent = new BaseComponent();
+
+    if(product.reviews_count) {
+      ratingRewiewsCount = new BaseComponent(
+        'p',
+        ['rating-info__rew-count'],
+        '',
+        `На основе ${product.reviews_count} оценок.`,
+      );
+    }
 
     this.element.append(ratingWrapper.element, ratingRewiewsCount.element);
 

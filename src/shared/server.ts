@@ -9,10 +9,12 @@ https://w-api2.aplaut.io/widgets/v2/render.json
 &widget_id=product-reviews
 `
 
-export async function getWidgetData(params: string[] = ['']): Promise<{ [key: string]: Widget; }[]> {
+export async function getWidgetData(params: string[] = ['']): Promise<Widget> {
   const serverResponse = await fetch(`${baseURL}&${params.join('&')}`);
 
-  const data: { [key: string]: Widget }[] = await serverResponse.json();
+  const data: Widget = await serverResponse.json();
+
+  console.log(`${baseURL}&${params.join('&')}`);
 
   console.log(data);
 

@@ -1,0 +1,55 @@
+.rv__author {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.author-details__rating-time-usage {
+
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+
+
+    .rating-info__rating {
+        display: none;
+    }
+}
+
+.author-avatar {
+    margin: 0px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(139, 53, 182);
+}
+
+.rating-info__rating-star {
+    margin-right: 10px;
+}
+
+.author-details__name {
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.author-details__time-usage {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.author-details__post-info {
+    display: flex;
+}
+
+.post-info__verified {
+    margin: 0 10px 0 0;
+}
+
+.post-info__date {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.4);
+}

@@ -1,4 +1,4 @@
-import { Product } from '../../shared/interfaces';
+import { Product, ReviewData, Review_photos } from '../../shared/interfaces';
 import { BaseComponent } from '../baseComponent';
 import './carouselOfPhotos.scss';
 
@@ -8,22 +8,22 @@ export class CarouselOfPhotos extends BaseComponent {
 
   constructor( mode: string = '', product: Product) {
 
-    const arrOfPhoto = product.review_photos;
 
     super('div', ['product-info__photos']);
-
-    console.log(arrOfPhoto)
 
     this.addPhoto = null;
 
     if (mode === 'product') {
+      if(product.review_photos.length === 0) return;
       this.addPhoto = new BaseComponent('div', ['photos__add-new-ph']);
+      this.render(mode, product.review_photos);
+    } else {
+      if(product.photos.length === 0) return;
+      this.render(mode, product.photos);
     }
-
-    this.render(product.review_photos);
   }
 
-  render(reviews_photos: { [key: string]: string; }[]) {
+  render(mode: string, reviews_photos: Review_photos[]) {
 
     const reviewsPhotoCarousel = new BaseComponent('div', ['product-info__reviews-ph-carousel']);
 
@@ -33,8 +33,6 @@ export class CarouselOfPhotos extends BaseComponent {
 
     const reviewsPhotos = new BaseComponent('div', ['product-info__gallery']);
 
-    
-
     if (this.addPhoto) {
       this.element.append(this.addPhoto.element, reviewsPhotoCarousel.element);
     } else {
@@ -43,10 +41,8 @@ export class CarouselOfPhotos extends BaseComponent {
 
     reviewsPhotoCarousel.element.append(carouselBtnLeft.element, reviewsPhotos.element, carouselBtnRight.element);
 
-    console.log(reviews_photos[1].url_thumb);
-
     for(let i = 0; i < reviews_photos.length; i++) {
-
+      console.log(mode, reviews_photos[i].url_thumb);
       const productPhotoThumb = new BaseComponent('div', ['photo-cards__product-pic']);
 
       productPhotoThumb.element.style.backgroundImage = `url('${reviews_photos[i].url_thumb}')`;
@@ -56,25 +52,39 @@ export class CarouselOfPhotos extends BaseComponent {
 
     }
 
-    let positionOfGalary = 0;
-    let shiftX = 110;
-    let positionOnPx = 0;
+    setTimeout(() => {
+      let positionOfGalary = 0;
+      let shiftX = 110;
+      let positionOnPx = 0;
 
+      setInterval(() => {
+        const cardPicShow = reviewsPhotoCarousel.element.offsetWidth;
+        
+        if(positionOfGalary === 0 ) {
+          carouselBtnLeft.element.style.display = 'none';
+        } else {
+          carouselBtnLeft.element.style.display = 'block';
+        };
 
-    carouselBtnLeft.element.addEventListener('click', () => {
-      if(positionOfGalary === 0 ) return;
-      positionOfGalary += -1;
-      positionOnPx = positionOfGalary * shiftX;
-      reviewsPhotos.element.style.left = `${positionOnPx * -1}px`;
-    });
+        if (positionOfGalary >= reviews_photos.length - Math.floor(cardPicShow / shiftX)) {
+          carouselBtnRight.element.style.display = 'none';
+        } else {
+          carouselBtnRight.element.style.display = 'block';
+        }
+      }, 100);
 
-
-    carouselBtnRight.element.addEventListener('click', () => {
-      const cardPicShow = reviewsPhotoCarousel.element.offsetWidth;
-      if (positionOfGalary >= reviews_photos.length - Math.floor(cardPicShow / shiftX)) return;
-      positionOfGalary += 1;
-      positionOnPx = positionOfGalary * shiftX;
-      reviewsPhotos.element.style.left = `${positionOnPx * -1}px`;
-    });
+      carouselBtnLeft.element.addEventListener('click', () => {
+        positionOfGalary += -1;
+        positionOnPx = positionOfGalary * shiftX;
+        reviewsPhotos.element.style.left = `${positionOnPx * -1}px`;
+      });
+  
+  
+      carouselBtnRight.element.addEventListener('click', () => {
+        positionOfGalary += 1;
+        positionOnPx = positionOfGalary * shiftX;
+        reviewsPhotos.element.style.left = `${positionOnPx * -1}px`;
+      });
+    }, 100);
   }
 }
