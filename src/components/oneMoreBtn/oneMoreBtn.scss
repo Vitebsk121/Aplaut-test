@@ -1,0 +1,16 @@
+.wg__one-more-btn {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 10px 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}

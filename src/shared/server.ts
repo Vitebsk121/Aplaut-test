@@ -1,5 +1,8 @@
 import { Widget } from '../components/widget/widget';
 
+let currentParams: string[];
+let totalPagesCount: number = 0;
+
 const baseURL = `
 https://w-api2.aplaut.io/widgets/v2/render.json
 ?authentication_token=56fa337b8ddf870c76021a5f
@@ -14,7 +17,18 @@ export async function getWidgetData(params: string[] = ['']): Promise<Widget> {
 
   const data: Widget = await serverResponse.json();
 
-  console.log(data);
+  currentParams = params;
+  totalPagesCount = Object(data).meta.total_pages;
 
   return data;
+}
+
+export function getCurrentUrl(): string[] {
+  const result = currentParams;
+  return result;
+}
+
+export function getCurrentTotalPageCount() {
+  const result = totalPagesCount;
+  return result
 }

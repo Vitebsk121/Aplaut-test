@@ -8,17 +8,18 @@ import './review.scss';
 
 export class Review extends BaseComponent {
   commetnsFormIsOpened: boolean;
+
   constructor(review: ReviewData) {
     super('div', ['rv-field__rv']);
 
     this.commetnsFormIsOpened = false;
 
-    this.render(review);    
+    this.render(review);
   }
 
-  setFormState = (state: boolean) => {
+  setFormState = (state: boolean): void => {
     this.commetnsFormIsOpened = state;
-  }
+  };
 
   render(review: ReviewData): void {
     let isLiked = false;
@@ -56,6 +57,14 @@ export class Review extends BaseComponent {
 
     const like = new BaseComponent('div', ['rv__info__like']);
 
+    const dislikesCount = new BaseComponent('p', ['rv__info__dislikes-count'], '', `${countOfDislikes}`);
+
+    const likesCount = new BaseComponent('p', ['rv__info__likes-count'], '', `${countOfLikes}`);
+
+    const reviewDislikesInfo = new BaseComponent('div', ['rv__info__dislikes-info']);
+
+    const dislike = new BaseComponent('div', ['rv__info__dislike']);
+
     like.element.addEventListener('click', () => {
       if (isLiked) return;
       isLiked = true;
@@ -74,12 +83,6 @@ export class Review extends BaseComponent {
         isDisliked = false;
       }
     });
-
-    const likesCount = new BaseComponent('p', ['rv__info__likes-count'], '', `${countOfLikes}`);
-
-    const reviewDislikesInfo = new BaseComponent('div', ['rv__info__dislikes-info']);
-
-    const dislike = new BaseComponent('div', ['rv__info__dislike']);
 
     dislike.element.addEventListener('click', () => {
       if (isDisliked) return;
@@ -100,8 +103,7 @@ export class Review extends BaseComponent {
       }
     });
 
-    const dislikesCount = new BaseComponent('p', ['rv__info__dislikes-count'], '', `${countOfDislikes}`);
-
+    const comments = new BaseComponent('div', ['rv__comments']);
 
     const answerBtn = new BaseComponent('button', ['rv__info__answer-btn'], '', 'Ответить');
     answerBtn.element.addEventListener('click', () => {
@@ -111,13 +113,10 @@ export class Review extends BaseComponent {
       comments.element.prepend(commentForm.element);
     });
 
-    const comments = new BaseComponent('div', ['rv__comments']);
-
     for (let i = 0; i < review.comments.length; i++) {
       const comment = new Comment(review.comments[i]);
       comments.element.append(comment.element);
     }
-
 
     this.element.append(
       author.element,

@@ -1,6 +1,11 @@
-export interface Widget {
+export interface WidgetData {
   product: Product,
   reviews: ReviewData[],
+  meta: {
+    current_page: number,
+    per_page: number,
+    total_pages: number,
+  }
 }
 
 // export interface Product {

@@ -11,7 +11,6 @@ export class Author extends BaseComponent {
     this.render(review);
   }
 
-
   render(review: ReviewData): void {
     const authorAvatar = new BaseComponent('div', ['author-avatar'], '', review.author.initials);
     authorAvatar.element.style.backgroundColor = setBeckgroundColor();
@@ -69,4 +68,3 @@ export class Author extends BaseComponent {
     verifiedAndPostData.element.append(verifiedAuthor.element, postDate.element);
   }
 }
-
