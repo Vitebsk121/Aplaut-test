@@ -2,17 +2,25 @@ import { ReviewData } from '../../shared/interfaces';
 import { Author } from '../author/author';
 import { BaseComponent } from '../baseComponent';
 import { CarouselOfPhotos } from '../carouselOfPhotos/carouselOfPhotos';
+import { Comment } from '../comment/comment';
+import { CommentForm } from '../commentForm/commentForm';
 import './review.scss';
 
 export class Review extends BaseComponent {
+  commetnsFormIsOpened: boolean;
   constructor(review: ReviewData) {
     super('div', ['rv-field__rv']);
 
-    this.render(review);
+    this.commetnsFormIsOpened = false;
+
+    this.render(review);    
+  }
+
+  setFormState = (state: boolean) => {
+    this.commetnsFormIsOpened = state;
   }
 
   render(review: ReviewData): void {
-
     let isLiked = false;
     let isDisliked = false;
 
@@ -96,7 +104,19 @@ export class Review extends BaseComponent {
 
 
     const answerBtn = new BaseComponent('button', ['rv__info__answer-btn'], '', 'Ответить');
+    answerBtn.element.addEventListener('click', () => {
+      if (this.commetnsFormIsOpened) return;
+      this.setFormState(true);
+      const commentForm = new CommentForm(review, this.setFormState);
+      comments.element.prepend(commentForm.element);
+    });
 
+    const comments = new BaseComponent('div', ['rv__comments']);
+
+    for (let i = 0; i < review.comments.length; i++) {
+      const comment = new Comment(review.comments[i]);
+      comments.element.append(comment.element);
+    }
 
 
     this.element.append(
@@ -106,6 +126,7 @@ export class Review extends BaseComponent {
       reviewCons.element,
       reviewGallery.element,
       reviewInfo.element,
+      comments.element,
     );
 
     if (review.pros === null) reviewPros.element.style.display = 'none';

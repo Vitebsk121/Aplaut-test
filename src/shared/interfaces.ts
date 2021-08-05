@@ -42,7 +42,7 @@ export interface Author {
   name: string,
 }
 
-export interface Comment {
+export interface CommentData {
   author: Author,
   author_avatar_url: null
   author_name: string,
@@ -57,7 +57,7 @@ export interface Comment {
 export interface ReviewData extends Product {
   author: Author,
   body: string,
-  comments: Comment[]
+  comments: CommentData[]
   cons: null,
   created_at: string,
   dimensions: null,
@@ -68,6 +68,7 @@ export interface ReviewData extends Product {
   origin: string,
   photos: ReviewPhotos[],
   is_verified: boolean,
+  id: string,
   pros: null,
   published_at: string,
   rating: number,

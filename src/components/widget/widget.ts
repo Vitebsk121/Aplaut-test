@@ -11,7 +11,7 @@ export class Widget {
   constructor(rootElement: HTMLElement) {
     this.widget = new BaseComponent('div', ['wg-wrapper']);
 
-    getWidgetData(['page=1', 'per_page=40']).then((data) => {
+    getWidgetData(['page=2', 'per_page=5']).then((data) => {
       this.render(rootElement, data);
     });
   }

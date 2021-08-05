@@ -1,4 +1,5 @@
 import { ReviewData } from '../../shared/interfaces';
+import { setBeckgroundColor } from '../../shared/servise';
 import { BaseComponent } from '../baseComponent';
 import { ProductRating } from '../product-Rating/productRating';
 import './author.scss';
@@ -10,22 +11,10 @@ export class Author extends BaseComponent {
     this.render(review);
   }
 
-  setBeckgroundColor(): string {
-    const colors = [
-      'rgba(131, 182, 53, 0.5)',
-      'rgba(53, 182, 57, 0.5)',
-      'rgba(53, 133, 182, 0.5)',
-      'rgba(139, 53, 182, 0.5)',
-    ];
-
-    const rand = Math.floor(Math.random() * colors.length);
-
-    return colors[rand];
-  }
 
   render(review: ReviewData): void {
     const authorAvatar = new BaseComponent('div', ['author-avatar'], '', review.author.initials);
-    authorAvatar.element.style.backgroundColor = this.setBeckgroundColor();
+    authorAvatar.element.style.backgroundColor = setBeckgroundColor();
 
     if (review.author.avatar_url) {
       authorAvatar.element.style.backgroundImage = `url(${review.author.avatar_url})`;
@@ -80,3 +69,4 @@ export class Author extends BaseComponent {
     verifiedAndPostData.element.append(verifiedAuthor.element, postDate.element);
   }
 }
+

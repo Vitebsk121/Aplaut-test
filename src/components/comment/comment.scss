@@ -1,0 +1,21 @@
+.rv__comments__comment {
+    display: flex;
+}
+
+.comment__field__info {
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.comment__author-avatar {
+    margin-top: 5px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
