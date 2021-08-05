@@ -1,7 +1,7 @@
 import { Widget } from '../components/widget/widget';
 
 let currentParams: string[];
-let totalPagesCount: number = 0;
+let totalPagesCount = 0;
 
 const baseURL = `
 https://w-api2.aplaut.io/widgets/v2/render.json
@@ -28,7 +28,7 @@ export function getCurrentUrl(): string[] {
   return result;
 }
 
-export function getCurrentTotalPageCount() {
+export function getCurrentTotalPageCount(): number {
   const result = totalPagesCount;
-  return result
+  return result;
 }

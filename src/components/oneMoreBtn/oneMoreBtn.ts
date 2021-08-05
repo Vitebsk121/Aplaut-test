@@ -1,5 +1,5 @@
 import { WidgetData } from '../../shared/interfaces';
-import { getCurrentTotalPageCount, getCurrentUrl, getWidgetData } from '../../shared/server';
+import { getCurrentUrl, getWidgetData } from '../../shared/server';
 import { getCurrentCountOfReviewsOnPage, getCurrentSort, renderNewReviewsWithSort } from '../../shared/servise';
 import { BaseComponent } from '../baseComponent';
 import './oneMoreBtn.scss';
@@ -15,11 +15,6 @@ export class OneMoreBtn extends BaseComponent {
     const reviewsCount = data.meta.per_page * data.meta.total_pages;
 
     const currentReviewsCount = data.meta.per_page;
-
-    console.log('reviewsCount ' + reviewsCount);
-    console.log('currentReviewsCount ' + currentReviewsCount);
-
-    console.log('sum ',  (reviewsCount - currentReviewsCount) );
 
     if ((reviewsCount - currentReviewsCount) <= 0) {
       this.element.style.display = 'none';

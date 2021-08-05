@@ -20,7 +20,7 @@ export function setBeckgroundColor(): string {
 
 export function renderNewReviewsWithSort(
   sortParamSettings: string = currentSort,
-  perPageSettings: number = 8,
+  perPageSettings = 8,
 ): void {
   currentCountOfReviewsOnPage = perPageSettings;
   currentSort = sortParamSettings;

@@ -21,7 +21,7 @@ export class Widget {
     });
   }
 
-  addSettingsToSelect(sortList: BaseComponent, data: WidgetData): void {
+  addSettingsToSelect(sortList: BaseComponent): void {
     sortList.element.setAttribute('name', 'sortList');
     const option1 = new Option('Сначала последние', 'new', false, true);
     const option2 = new Option('Сначала самые ранние', 'old', false, false);
@@ -51,6 +51,6 @@ export class Widget {
       oneMoreBtn.element,
     );
 
-    this.addSettingsToSelect(sortList, data);
+    this.addSettingsToSelect(sortList);
   }
 }
