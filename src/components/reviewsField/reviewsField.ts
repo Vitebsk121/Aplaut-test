@@ -4,16 +4,16 @@ import { Review } from '../review/review';
 import './reviewsField.scss';
 
 export class ReviewsField extends BaseComponent {
-    constructor(reviews: ReviewData[]) {
-        super('div', ['rv-field']);
+  constructor(reviews: ReviewData[]) {
+    super('div', ['rv-field']);
 
-        this.render(reviews)
-    }
+    this.render(reviews);
+  }
 
-    render(reviews: ReviewData[]) {
-        for(let i = 0; i < reviews.length; i++) {
-            const review = new Review(reviews[i]);
-            this.element.append(review.element);
-        }
+  render(reviews: ReviewData[]): void {
+    for (let i = 0; i < reviews.length; i++) {
+      const review = new Review(reviews[i]);
+      this.element.append(review.element);
     }
+  }
 }

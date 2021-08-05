@@ -32,8 +32,8 @@ const stars = {
     sMTAuMjEyIEw5Ljk2LDkuNzU2IEwxMiw0LjkyIEwxNC4wNTIsOS43NjggTDE5LjMwOCwxMC4\
     yMjQgTDE1LjMyNCwxMy42OCBMMTYuNTI0LDE4LjgxNiBMMTIsMTYuMDggTDcuNDg4LDE4Ljg\
     wNCBMNy40ODgsMTguODA0IFonPjwvcGF0aD48L3N2Zz4=')
-  `
-}
+  `,
+};
 
 export class ProductRating extends BaseComponent {
   constructor(product: Product) {
@@ -43,7 +43,6 @@ export class ProductRating extends BaseComponent {
   }
 
   render(product: Product): void {
-
     const ratingWrapper = new BaseComponent('div', ['rating-info__wrapper']);
 
     const rating = new BaseComponent('p', ['rating-info__rating'], '', String(product.rating).replace('.', ','));
@@ -52,7 +51,7 @@ export class ProductRating extends BaseComponent {
 
     let ratingRewiewsCount: BaseComponent = new BaseComponent();
 
-    if(product.reviews_count) {
+    if (product.reviews_count) {
       ratingRewiewsCount = new BaseComponent(
         'p',
         ['rating-info__rew-count'],

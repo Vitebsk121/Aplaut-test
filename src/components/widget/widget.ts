@@ -17,10 +17,8 @@ export class Widget {
   }
 
   render(rootElement: HTMLElement, data: Widget): void {
-
     const productInfo = new ProductInfo(Object(data).product);
 
-    Object(data).reviews;
     const reviewsField = new ReviewsField(Object(data).reviews);
 
     rootElement.append(this.widget.element);

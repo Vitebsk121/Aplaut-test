@@ -1,4 +1,4 @@
-import { Widget } from "../components/widget/widget";
+import { Widget } from '../components/widget/widget';
 
 const baseURL = `
 https://w-api2.aplaut.io/widgets/v2/render.json
@@ -7,14 +7,12 @@ https://w-api2.aplaut.io/widgets/v2/render.json
 &context_id=10350209
 &theme_id=default
 &widget_id=product-reviews
-`
+`;
 
 export async function getWidgetData(params: string[] = ['']): Promise<Widget> {
   const serverResponse = await fetch(`${baseURL}&${params.join('&')}`);
 
   const data: Widget = await serverResponse.json();
-
-  console.log(`${baseURL}&${params.join('&')}`);
 
   console.log(data);
 

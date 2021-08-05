@@ -1,3 +1,56 @@
 .rv-field__rv {
     margin-bottom: 50px;
 }
+
+.rv__info {
+    display: flex;
+    align-items: center;
+}
+
+.rv__info__likes-info,
+.rv__info__dislikes-info {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.rv__info__like {
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+    background-image: url(https://image.flaticon.com/icons/png/512/633/633759.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.rv__info__likes-count,
+.rv__info__dislikes-count {
+    width: 10px;
+    height: 18px;
+}
+
+.rv__info__dislike {
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+    background-image: url(https://image.flaticon.com/icons/png/512/633/633759.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    transform: scale(-1);
+}
+
+.rv__info__answer-btn {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.5);
+
+    &:hover {
+        color: black;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
