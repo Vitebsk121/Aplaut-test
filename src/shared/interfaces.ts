@@ -42,7 +42,7 @@ export interface Author {
   name: string,
 }
 
-export interface CommentData {
+export interface CommentData extends ReviewData {
   author: Author,
   author_avatar_url: null
   author_name: string,

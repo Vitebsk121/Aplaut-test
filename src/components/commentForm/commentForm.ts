@@ -55,17 +55,19 @@ export class CommentForm extends BaseComponent {
 
         const setUserName = new BaseComponent('input', ['form__user-info__name-input', 'hidden']);
         setUserName.element.setAttribute('type', 'text');
-        setUserName.element.addEventListener('input', (e) => {
-            this.setName(e.target, userName);
-        });
         setUserName.element.addEventListener('keypress', (e) => {
             if(e.code === 'Enter') {
                 e.preventDefault();
                 this.setName(e.target, userName);
                 setUserName.element.style.display = 'none';
             }
-
         });
+        setUserName.element.addEventListener('change', (e) => {
+            e.preventDefault();
+            this.setName(e.target, userName);
+            setUserName.element.style.display = 'none';  
+        })
+
 
         const setUserNameBtn = new BaseComponent('div', ['form__user-info__name-btn']);
         setUserNameBtn.element.addEventListener('click', () => {

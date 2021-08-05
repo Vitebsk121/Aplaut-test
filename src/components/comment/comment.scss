@@ -1,21 +1,89 @@
-.rv__comments__comment {
+.comment-wrapper {
+    margin-bottom: 10px;
     display: flex;
 }
 
-.comment__field__info {
-    border-radius: 50px;
+.comment__field {
+    padding: 5px;
+    border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
 }
 
 .comment__author-avatar {
-    margin-top: 5px;
     margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    min-width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-position: center;
     background-size: cover;
+}
+
+.comment__field__info {
+    display: flex;
+    align-items: center;
+
+    & > p {
+        margin: 0 10px 0 0;
+    }
+}
+
+.comment__field__info__author-name {
+    font-weight: 600;
+}
+
+.comment__field__info__comment-date {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.comment__field__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment__field__menu__answer-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.comment__field__menu__likes-wrapper {
+    display: flex;
+}
+
+.comment__field__menu__likes-info,
+.comment__field__menu__dislikes-info {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.comment__field__menu__like {
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+    background-image: url(https://image.flaticon.com/icons/png/512/633/633759.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.comment__field__menu__likes-count,
+.comment__field__menu__dislikes-count {
+    width: 10px;
+    height: 18px;
+}
+
+.comment__field__menu__dislike {
+    margin-right: 10px;
+    width: 17px;
+    height: 17px;
+    background-image: url(https://image.flaticon.com/icons/png/512/633/633759.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    transform: scale(-1);
 }
